@@ -11,8 +11,13 @@ async function main() {
 
 main();
 
+function showUserPosts(id) {
+    window.location.href = `http://127.0.0.1:5500/user.html`
+    console.log(id);
+}
+
 function userHTML(user) {
-return`<div class="user-card">
+return`<div class="user-card" onclick="showUserPosts(${user.id})">
 <div class="user-card__container">
 <h3>${user.name}</h4>
     <p><b>Email:</b> ${user.email}</p>
@@ -21,6 +26,11 @@ return`<div class="user-card">
     ${user.website}
     </a></p>
 </div>
-</div>`
+</div>`;
 }
 
+
+
+// VANILLA JAVASCRIPT
+
+// How to route to a new page in vanilla javascript
