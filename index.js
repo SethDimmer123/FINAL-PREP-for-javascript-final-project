@@ -4,16 +4,19 @@
 async function main() {
     const users = (await fetch("https://jsonplaceholder.typicode.com/users"));
     const usersData = await users.json();
-    console.log(
-    usersData.map(user => `<div class="user-card">
+    const userListEl = document.querySelector('.user-list');
+    console.log(usersData);
+    userListEl.innerHTML = usersData
+    .map(
+    (user) => `<div class="user-card">
             <div class="user-card__container">
-            <h3>User's Name</h4>
+            <h3>U</h4>
                 <p><b>Email:</b> email@email.com</p>
                 <p><b>Phone:</b> 0000000000</p>
                 <p><b>Website:</b> <a href="https://website.website" target="_blank">website.website</a></p>
             </div>
-        </div>`)
-        );
+        </div>`
+        ) .join("")
 }
 
 main();
@@ -25,6 +28,8 @@ main();
 // use map method to turn array full of objects to html elements
 
 // use .join method to convert it to a string and set the inner html
+
+
 
 
 
