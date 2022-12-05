@@ -14,9 +14,26 @@ const postListEl = document.querySelector('.post-list')
 // postListEl = document.querySelector('.post-list').innerHTML = 
 // we use map method of the html we want to make dynamic inside the array then use the .join method to convert the array to a string
 
-function onSearchChange(event) {// we want to console log the value we get in the input textarea which is the id
-    console.log(event.target.value)
+// the onsearchchange async function was copied and pasted from the other async function down below to be able to rerender each time we changed the id value for dynamic purposes
+
+async function onSearchChange(event) {// we want to console log the value we get in the input textarea which is the id
+    const id = event.target.value;
+    const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
+    const postsData = await posts.json();
+
+    postListEl .innerHTML = postsData.map(posts => `
+    <div class="post">
+    <div class="post__title">
+      ${posts.title}
+    </div>
+    <p class="post__body">
+      ${posts.body}
+    </p>
+  </div>
+  `).join("") // join method converts the array from html to a string
 }
+
+
 // we get an event in the console we can work with
 // target has a value that i want
 
@@ -25,6 +42,7 @@ async function main() {
     const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
     const postsData = await posts.json();
     console.log(postsData)
+
     postListEl .innerHTML = postsData.map(posts => `
     <div class="post">
     <div class="post__title">
@@ -38,5 +56,11 @@ async function main() {
 }
 
 main();
+
+
+
+
+
+
 
 
