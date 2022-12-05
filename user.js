@@ -14,6 +14,12 @@ const postListEl = document.querySelector('.post-list')
 // postListEl = document.querySelector('.post-list').innerHTML = 
 // we use map method of the html we want to make dynamic inside the array then use the .join method to convert the array to a string
 
+function onSearchChange(event) {// we want to console log the value we get in the input textarea which is the id
+    console.log(event.target.value)
+}
+// we get an event in the console we can work with
+// target has a value that i want
+
 async function main() {
     const id = localStorage.getItem("id")
     const posts = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
@@ -32,3 +38,5 @@ async function main() {
 }
 
 main();
+
+
