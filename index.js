@@ -12,7 +12,7 @@ async function main() {
 main();
 
 function showUserPosts(id) {
-    console.log(id);
+    window.location.href = `${window.location.origin}/user.html`
 }
 
 
