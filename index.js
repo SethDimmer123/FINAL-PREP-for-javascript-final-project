@@ -5,7 +5,6 @@ async function main() {
     const users = (await fetch("https://jsonplaceholder.typicode.com/users"));
     const usersData = await users.json();
     console.log(usersData)
-
 }
 
 main();
